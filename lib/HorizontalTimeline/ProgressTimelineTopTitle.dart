@@ -39,6 +39,8 @@ class ProgressTimelineTopTitle extends StatefulWidget {
   /// Style of text used to display stage title
   final TextStyle textStyle;
 
+  final int currentIndex ;
+
   ProgressTimelineTopTitle(
       {@required this.states,
         this.height,
@@ -50,13 +52,17 @@ class ProgressTimelineTopTitle extends StatefulWidget {
         this.connectorLength,
         this.connectorWidth,
         this.connectorColor,
-        this.uncheckedIcon});
+        this.uncheckedIcon,
+        this.currentIndex});
 
   final _ProgressTimelineTopTitleState state = new _ProgressTimelineTopTitleState();
 
   /// method to jump to next stage in the process.
   void gotoNextStage() {
     state.gotoNextStage();
+  }
+void currentStage(int currentStage) {
+    state.currentStage(currentStage);
   }
 
   /// method to mark the current stage as failed.
@@ -98,6 +104,12 @@ class _ProgressTimelineTopTitleState extends State<ProgressTimelineTopTitle> {
             duration: Duration(milliseconds: 1000),
             curve: Curves.fastOutSlowIn);
       }
+    });
+  }
+
+  void currentStage(int currentStage){
+    setState(() {
+      currentStageIndex = currentStage;
     });
   }
 
@@ -263,7 +275,7 @@ class _RenderedState extends StatelessWidget {
     )
         : Icon(
       Icons.adjust,
-      color: Colors.grey,
+      color: Colors.green,
       size: iconSize,
     );
   }

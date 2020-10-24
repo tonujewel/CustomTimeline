@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
 
   progress_timeline: ^0.0.5
+  timeline_tile: ^1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
